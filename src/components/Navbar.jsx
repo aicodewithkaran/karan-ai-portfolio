@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Calendar, Menu, X, Sparkles, FileText, Code2, Briefcase, Mail, MessageSquare } from 'lucide-react';
+import { Calendar, Menu, X, Sparkles, FileText, Code2, Briefcase, Mail, MessageSquare, ShieldCheck } from 'lucide-react';
 import { sfx } from '../utils/sfx';
 
-export default function Navbar({ onOpenCalendly }) {
+export default function Navbar({ onOpenCalendly, onOpenScanShield }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -50,9 +50,18 @@ export default function Navbar({ onOpenCalendly }) {
           ))}
         </div>
 
-        {/* Action Buttons (Calendly) */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        {/* Action Buttons (ScanShield + Calendly) */}
+        <div className="flex items-center gap-2 sm:gap-3">
           
+          {/* Launch ScanShield AI CTA */}
+          <button
+            onClick={() => { sfx.playClick(); onOpenScanShield(); }}
+            className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold font-display glass-panel border border-indigo-500/40 text-indigo-300 hover:text-white hover:bg-indigo-600/20 hover:border-indigo-400 transition-all duration-300"
+          >
+            <ShieldCheck className="w-4 h-4 text-indigo-400" />
+            <span className="hidden sm:inline">ScanShield AI</span>
+          </button>
+
           {/* Book Appointment CTA */}
           <button
             onClick={() => { sfx.playClick(); onOpenCalendly(); }}
@@ -76,6 +85,14 @@ export default function Navbar({ onOpenCalendly }) {
       {mobileMenuOpen && (
         <div className="md:hidden mt-2 max-w-7xl mx-auto glass-panel rounded-2xl p-5 border border-slate-800 animate-fadeIn">
           <div className="flex flex-col gap-4">
+            <button
+              onClick={() => { setMobileMenuOpen(false); onOpenScanShield(); }}
+              className="flex items-center gap-3 text-indigo-300 font-medium py-2 px-3 rounded-lg bg-indigo-500/10 border border-indigo-500/20"
+            >
+              <ShieldCheck className="w-4 h-4 text-indigo-400" />
+              <span>Launch ScanShield AI Platform</span>
+            </button>
+
             {navLinks.map((link) => (
               <a
                 key={link.name}

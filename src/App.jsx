@@ -10,16 +10,17 @@ import CalendlyModal from './components/CalendlyModal';
 import AIChatModal from './components/AIChatModal';
 import BootScreen from './components/BootScreen';
 import CursorSpotlight from './components/CursorSpotlight';
+import ScanShieldApp from './components/ScanShieldApp';
 
 export default function App() {
   const [showBootScreen, setShowBootScreen] = useState(true);
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
   const [isAIChatOpen, setIsAIChatOpen] = useState(false);
+  const [currentView, setCurrentView] = useState('portfolio'); // 'portfolio' | 'scanshield'
 
   // Global Keyboard Shortcuts (B -> Book, A -> AI Assistant, Esc -> Close)
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // Don't trigger if user is typing in an input or textarea
       if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
         return;
       }
@@ -39,6 +40,13 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Render Immersive ScanShield AI Web App Platform
+  if (currentView === 'scanshield') {
+    return (
+      <ScanShieldApp onBackToPortfolio={() => setCurrentView('portfolio')} />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#0b0f17] text-slate-100 font-sans relative selection:bg-cyan-500/30 selection:text-cyan-200 overflow-x-hidden">
       
@@ -53,6 +61,7 @@ export default function App() {
       {/* Sticky Header */}
       <Navbar 
         onOpenCalendly={() => setIsCalendlyOpen(true)}
+        onOpenScanShield={() => setCurrentView('scanshield')}
       />
 
       {/* Main Content Sections */}
@@ -60,10 +69,11 @@ export default function App() {
         <Hero 
           onOpenCalendly={() => setIsCalendlyOpen(true)} 
           onOpenAIChat={() => setIsAIChatOpen(true)}
+          onOpenScanShield={() => setCurrentView('scanshield')}
         />
 
         <Experience />
-        <Projects />
+        <Projects onOpenScanShield={() => setCurrentView('scanshield')} />
         <Testimonials />
         <Skills />
       </main>

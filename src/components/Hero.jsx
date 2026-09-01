@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Calendar, Download, ArrowRight, Bot, Scale, Users, FileSpreadsheet } from 'lucide-react';
+import { Calendar, Download, ArrowRight, Bot, Scale, Users, FileSpreadsheet, ShieldCheck } from 'lucide-react';
 import { sfx } from '../utils/sfx';
 
-export default function Hero({ onOpenCalendly, onOpenAIChat }) {
+export default function Hero({ onOpenCalendly, onOpenAIChat, onOpenScanShield }) {
   const canvasRef = useRef(null);
 
   const outcomes = [
@@ -139,12 +139,12 @@ export default function Hero({ onOpenCalendly, onOpenAIChat }) {
           </span>
         </div>
 
-        {/* Refined Main Headline */}
+        {/* Main Headline */}
         <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold font-display tracking-tight text-slate-100 leading-tight mb-4 max-w-4xl mx-auto">
           I build custom AI tools that read your documents & automate manual work
         </h1>
 
-        {/* Smaller Dynamic Sub-headline */}
+        {/* Dynamic Sub-headline */}
         <div className="min-h-[40px] flex items-center justify-center mb-6">
           <div className="text-lg sm:text-2xl md:text-3xl font-semibold font-mono text-gradient-cyan inline-block">
             ⚡ {displayedText}
@@ -152,7 +152,7 @@ export default function Hero({ onOpenCalendly, onOpenAIChat }) {
           </div>
         </div>
 
-        {/* Concise Problem Subtitle */}
+        {/* Subtitle */}
         <p className="max-w-2xl mx-auto text-xs sm:text-sm text-slate-300 font-light leading-relaxed mb-8">
           Transforming complex, unstructured business documents into clean data pipelines — helping teams replace hours of manual document review with high-precision AI workflows.
         </p>
@@ -169,16 +169,14 @@ export default function Hero({ onOpenCalendly, onOpenAIChat }) {
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
 
-          <a
-            href="/karan singh resume.pdf"
-            download="Karan_Singh_Resume.pdf"
-            onClick={() => sfx.playClick()}
+          <button
+            onClick={() => { sfx.playClick(); onOpenScanShield(); }}
             onMouseEnter={() => sfx.playHover()}
-            className="flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold font-display glass-panel border border-slate-700/80 text-slate-200 hover:text-white hover:border-cyan-500/50 hover:bg-slate-800/60 transition-all duration-300"
+            className="flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold font-display glass-panel border border-indigo-500/50 text-indigo-300 hover:text-white hover:border-indigo-400 hover:bg-indigo-600/20 transition-all duration-300"
           >
-            <Download className="w-4 h-4 text-cyan-400" />
-            <span>Download Resume</span>
-          </a>
+            <ShieldCheck className="w-4 h-4 text-indigo-400" />
+            <span>Try ScanShield AI Platform</span>
+          </button>
 
           <button
             onClick={() => { sfx.playClick(); onOpenAIChat(); }}
@@ -190,7 +188,7 @@ export default function Hero({ onOpenCalendly, onOpenAIChat }) {
           </button>
         </div>
 
-        {/* Target Audience Section: "Who I Build Solutions For" */}
+        {/* Target Audience Section */}
         <div className="pt-6 border-t border-slate-800/80">
           <div className="text-[11px] font-mono text-cyan-400 uppercase tracking-widest mb-6">
             WHO THIS IS BUILT FOR

@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
-import { Code2, ShieldAlert, FileSearch, Sparkles, ExternalLink, Cpu, Check, ArrowRight, X, Info } from 'lucide-react';
+import { Code2, ShieldAlert, FileSearch, Sparkles, ExternalLink, Cpu, Check, ArrowRight, X, Info, ShieldCheck } from 'lucide-react';
 import { sfx } from '../utils/sfx';
 
-export default function Projects() {
+export default function Projects({ onOpenScanShield }) {
   const [activeModalProject, setActiveModalProject] = useState(null);
 
   const projects = [
     {
       id: "shieldscan",
-      title: "ShieldScan AI",
-      subtitle: "AI-Powered Legal Risk Analyst & Contract Intelligence",
+      title: "ScanShield AI",
+      subtitle: "Enterprise Legal Risk Analyst & Contract Intelligence Platform",
       category: "Document Intelligence",
-      badge: "Self-Initiated Production Architecture",
+      badge: "Production Immersive Architecture",
       demoUrl: "https://shieldscan.streamlit.app/",
       icon: ShieldAlert,
-      iconBg: "from-cyan-500 to-blue-600",
-      description: "A multi-stage LLM pipeline designed for contract analysis, clause extraction, legal risk detection, and plain-English summaries.",
-      longDescription: "Built as a production-grade architecture to demonstrate automated legal audit capabilities. Ingests PDF contracts, extracts non-standard clauses, and routes queries through multi-stage LLMs with zero data persistence for privacy protection.",
+      iconBg: "from-indigo-500 to-blue-600",
+      description: "A split-screen legal contract auditor with automated clause extraction, plain-English trap explanations, redline counter-language generators, and citation-linked AI chat.",
+      longDescription: "Built as an Awwwards-style enterprise SaaS platform to demonstrate automated legal audit capabilities. Features line-by-line contract parsing, soft risk-tinted card stacks, redline counter-language generators, citation-linked AI chat, dark/light theme options, and custom laser cursor tracking.",
       keyFeatures: [
-        "Multi-Stage LLM Pipeline for clause-by-clause contract risk extraction",
-        "OCR-enabled document processing via PyMuPDF & Tesseract for scanned PDFs",
-        "Intelligent model routing (fast triage vs deep reasoning LLMs)",
-        "Concurrent asynchronous execution workflows for zero-latency reports",
-        "Secure zero-persistence report generation preserving strict data privacy"
+        "Split-Screen Masterwork Dashboard with synchronized document viewer",
+        "Soft Risk-Tinted Card Stack (High, Medium, Low risk classifications)",
+        "The Trap (Plain-English danger warnings) & Redline counter-language",
+        "Citation-Linked AI Chat Drawer snapping left panel to line numbers",
+        "Theme Switcher (Dark/Light Slate) & Laser Precision Cursor toggle"
       ],
-      tags: ["Multi-Stage LLMs", "PyMuPDF", "OCR Tesseract", "FastAPI", "Vector Embeddings", "Mistral / LLaMA"]
+      tags: ["Split-Screen Masterwork", "Multi-Stage LLMs", "Redline Counter-Language", "Citation Chat", "Vite / React 19", "Tailwind v4"],
+      hasAppLauncher: true
     },
     {
       id: "candidex",
@@ -44,7 +45,8 @@ export default function Projects() {
         "Automated tailored interview question generator per applicant profile",
         "Secure authentication workflows and candidate pipeline state management"
       ],
-      tags: ["ATS Scoring Engine", "LLM Evaluation", "Resume Parsing", "Supabase", "PostgreSQL", "Python Workflows"]
+      tags: ["ATS Scoring Engine", "LLM Evaluation", "Resume Parsing", "Supabase", "PostgreSQL", "Python Workflows"],
+      hasAppLauncher: false
     }
   ];
 
@@ -66,7 +68,7 @@ export default function Projects() {
             Featured <span className="text-gradient-cyan">AI Work</span>
           </h2>
           <p className="text-slate-400 text-sm sm:text-base">
-            Detailed breakdown of self-initiated LLM applications with live Streamlit interactive demos.
+            Detailed breakdown of self-initiated LLM applications with live Streamlit and full-screen interactive web platforms.
           </p>
         </div>
 
@@ -104,12 +106,6 @@ export default function Projects() {
                     {proj.description}
                   </p>
 
-                  {/* Streamlit Inactivity Notice Banner */}
-                  <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-[11px] font-mono text-slate-400 flex items-start gap-2 mb-6">
-                    <Info className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                    <span>Hosted on Streamlit. If asleep due to inactivity, click <strong>"Wake App"</strong> or contact me if unreachable.</span>
-                  </div>
-
                   {/* Feature Highlights Quick List */}
                   <div className="space-y-2.5 mb-6">
                     {proj.keyFeatures.slice(0, 3).map((feat, fIdx) => (
@@ -134,26 +130,38 @@ export default function Projects() {
 
                 </div>
 
-                {/* Actions (Live Demo + Architecture Modal) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  <a
-                    href={proj.demoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={() => sfx.playClick()}
-                    className="py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-semibold font-display flex items-center justify-center gap-2 hover:opacity-90 shadow-md shadow-cyan-500/20 transition-all"
-                  >
-                    <ExternalLink className="w-3.5 h-3.5" />
-                    <span>Launch Live Demo</span>
-                  </a>
+                {/* Actions (Launch Interactive Platform + Live Demo + Architecture Modal) */}
+                <div className="space-y-2 pt-2">
+                  {proj.hasAppLauncher && (
+                    <button
+                      onClick={() => { sfx.playClick(); onOpenScanShield(); }}
+                      className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-indigo-500 via-blue-600 to-purple-600 text-white text-xs font-semibold font-display flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-[1.01] transition-all"
+                    >
+                      <ShieldCheck className="w-4 h-4" />
+                      <span>Launch ScanShield AI Platform</span>
+                    </button>
+                  )}
 
-                  <button
-                    onClick={() => { sfx.playClick(); setActiveModalProject(proj); }}
-                    className="py-3 px-4 rounded-xl glass-panel border border-slate-700/70 text-xs font-semibold font-display text-slate-200 hover:text-white hover:border-cyan-500/50 hover:bg-cyan-500/10 flex items-center justify-center gap-2 transition-all"
-                  >
-                    <span>View Architecture</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
-                  </button>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <a
+                      href={proj.demoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={() => sfx.playClick()}
+                      className="py-2.5 px-4 rounded-xl glass-panel border border-slate-700/70 text-slate-300 text-xs font-semibold font-display flex items-center justify-center gap-2 hover:text-white hover:border-cyan-500/50 transition-all"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>Streamlit Demo</span>
+                    </a>
+
+                    <button
+                      onClick={() => { sfx.playClick(); setActiveModalProject(proj); }}
+                      className="py-2.5 px-4 rounded-xl glass-panel border border-slate-700/70 text-xs font-semibold font-display text-slate-300 hover:text-white hover:border-cyan-500/50 transition-all flex items-center justify-center gap-1.5"
+                    >
+                      <span>Architecture</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
+                    </button>
+                  </div>
                 </div>
 
               </div>
@@ -191,15 +199,6 @@ export default function Projects() {
               {activeModalProject.longDescription}
             </p>
 
-            {/* Streamlit Notice */}
-            <div className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-mono text-slate-300 flex items-start gap-2.5 mb-6">
-              <Info className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-              <div>
-                <strong>Live Streamlit Demo:</strong> {activeModalProject.demoUrl}<br />
-                <span className="text-slate-400 text-[11px]">Hosted on Streamlit Free Tier. If the app goes to sleep due to inactivity, click <em>"Wake App"</em> or contact me to start it up immediately.</span>
-              </div>
-            </div>
-
             {/* Key Features List */}
             <div className="mb-6">
               <h4 className="text-xs font-mono text-slate-400 tracking-wider mb-3">CORE SYSTEM CAPABILITIES</h4>
@@ -225,15 +224,28 @@ export default function Projects() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
+              {activeModalProject.hasAppLauncher && (
+                <button
+                  onClick={() => {
+                    setActiveModalProject(null);
+                    onOpenScanShield();
+                  }}
+                  className="flex-1 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-blue-600 text-white font-display font-semibold text-xs flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+                >
+                  <ShieldCheck className="w-4 h-4" />
+                  <span>Launch ScanShield AI Platform</span>
+                </button>
+              )}
+
               <a
                 href={activeModalProject.demoUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex-1 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-display font-semibold text-xs flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+                className="py-3 px-5 rounded-xl glass-panel border border-slate-700 text-slate-200 hover:text-white font-display font-semibold text-xs flex items-center justify-center gap-2 transition-colors"
               >
-                <ExternalLink className="w-4 h-4" />
-                <span>Launch Streamlit Live App</span>
+                <ExternalLink className="w-4 h-4 text-cyan-400" />
+                <span>Streamlit App</span>
               </a>
 
               <button
