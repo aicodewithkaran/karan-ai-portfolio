@@ -13,6 +13,7 @@ dist-ssr
 *.local
 vercel-recovery-codes.txt
 *.txt
+*.pdf
 
 # Environment variables
 .env
@@ -29,6 +30,3 @@ vercel-recovery-codes.txt
 *.njsproj
 *.sln
 *.sw?
-*.pdf
-**/*.pdf
-.pdf
