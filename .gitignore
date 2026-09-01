@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+vercel-recovery-codes.txt
+*.txt
 
 # Environment variables
 .env
@@ -27,3 +29,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.pdf
+**/*.pdf
+.pdf
