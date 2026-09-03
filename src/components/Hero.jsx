@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Calendar, Download, ArrowRight, Bot, Scale, Users, FileSpreadsheet, ShieldCheck } from 'lucide-react';
+import { Calendar, Download, ArrowRight, Scale, Globe, Rocket, FileSpreadsheet } from 'lucide-react';
 import { sfx } from '../utils/sfx';
 
-export default function Hero({ onOpenCalendly, onOpenAIChat, onOpenScanShield }) {
+export default function Hero({ onOpenCalendly }) {
   const canvasRef = useRef(null);
 
   const outcomes = [
     "Contract Review & Risk Extraction",
-    "Automated Resume Screening",
-    "Unstructured Document Parsing",
+    "Full-Stack Web Development & Modern Websites",
+    "AI Agent & LLM Workflow Automation",
     "Custom LLM & AI Tool Integration"
   ];
   const [outcomeIdx, setOutcomeIdx] = useState(0);
@@ -126,7 +126,7 @@ export default function Hero({ onOpenCalendly, onOpenAIChat, onOpenScanShield })
       <div className="glow-orb-cyan top-1/4 -left-40 z-0 opacity-40"></div>
       <div className="glow-orb-purple bottom-10 -right-40 z-0 opacity-40"></div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center">
         
         {/* Status Tag */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-panel border border-cyan-500/30 mb-6">
@@ -154,7 +154,7 @@ export default function Hero({ onOpenCalendly, onOpenAIChat, onOpenScanShield })
 
         {/* Subtitle */}
         <p className="max-w-2xl mx-auto text-xs sm:text-sm text-slate-300 font-light leading-relaxed mb-8">
-          Transforming complex, unstructured business documents into clean data pipelines — helping teams replace hours of manual document review with high-precision AI workflows.
+          Transforming complex business needs into clean full-stack web applications, AI integrations, and automated data pipelines.
         </p>
 
         {/* CTAs */}
@@ -168,68 +168,71 @@ export default function Hero({ onOpenCalendly, onOpenAIChat, onOpenScanShield })
             <span>Book a 1-on-1 Strategy Call</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
-
-          <button
-            onClick={() => { sfx.playClick(); onOpenScanShield(); }}
-            onMouseEnter={() => sfx.playHover()}
-            className="flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold font-display glass-panel border border-indigo-500/50 text-indigo-300 hover:text-white hover:border-indigo-400 hover:bg-indigo-600/20 transition-all duration-300"
-          >
-            <ShieldCheck className="w-4 h-4 text-indigo-400" />
-            <span>Try ScanShield AI Platform</span>
-          </button>
-
-          <button
-            onClick={() => { sfx.playClick(); onOpenAIChat(); }}
-            onMouseEnter={() => sfx.playHover()}
-            className="flex items-center gap-2 px-4 py-3 rounded-xl text-xs font-semibold font-display glass-panel border border-purple-500/40 text-purple-300 hover:text-purple-200 hover:border-purple-400 hover:bg-purple-500/10 transition-all duration-300"
-          >
-            <Bot className="w-4 h-4 text-purple-400" />
-            <span>Ask AI Assistant</span>
-          </button>
         </div>
 
-        {/* Target Audience Section */}
-        <div className="pt-6 border-t border-slate-800/80">
-          <div className="text-[11px] font-mono text-cyan-400 uppercase tracking-widest mb-6">
+
+        {/* Target Audience Section (Scaled up ~50%) */}
+        <div className="pt-10 border-t border-slate-800/80">
+          <div className="text-sm sm:text-base font-mono text-cyan-400 uppercase tracking-widest mb-8 font-bold">
             WHO THIS IS BUILT FOR
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             
-            <div className="glass-panel p-5 rounded-2xl border border-slate-800/90 glass-panel-hover">
-              <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 w-fit mb-3">
-                <Scale className="w-5 h-5" />
+            <div className="glass-panel p-7 rounded-3xl border border-slate-800/90 glass-panel-hover flex flex-col justify-between">
+              <div>
+                <div className="p-3.5 rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 w-fit mb-4">
+                  <Scale className="w-7 h-7" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold font-display text-slate-100 mb-2.5">Legal Teams & Law Firms</h3>
+                <p className="text-sm text-slate-300 leading-relaxed font-light">
+                  Automated contract risk auditing, non-standard clause extraction, and instant plain-English summaries from lengthy legal documents.
+                </p>
               </div>
-              <h3 className="text-base font-bold font-display text-slate-100 mb-1.5">Legal Teams & Law Firms</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Automated contract risk auditing, non-standard clause extraction, and instant plain-English summaries from lengthy legal documents.
-              </p>
             </div>
 
-            <div className="glass-panel p-5 rounded-2xl border border-slate-800/90 glass-panel-hover">
-              <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20 w-fit mb-3">
-                <Users className="w-5 h-5" />
+            <div className="glass-panel p-7 rounded-3xl border border-slate-800/90 glass-panel-hover flex flex-col justify-between">
+              <div>
+                <div className="p-3.5 rounded-2xl bg-purple-500/10 text-purple-400 border border-purple-500/20 w-fit mb-4">
+                  <Globe className="w-7 h-7" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold font-display text-slate-100 mb-2.5">Founders & Tech Businesses</h3>
+                <p className="text-sm text-slate-300 leading-relaxed font-light">
+                  High-converting modern web applications, interactive web tools, and custom AI feature integrations built for speed and growth.
+                </p>
               </div>
-              <h3 className="text-base font-bold font-display text-slate-100 mb-1.5">HR & Recruitment Agencies</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Automated resume screening, candidate semantic ranking beyond keywords, and automated interview question generation.
-              </p>
             </div>
 
-            <div className="glass-panel p-5 rounded-2xl border border-slate-800/90 glass-panel-hover">
-              <div className="p-2.5 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 w-fit mb-3">
-                <FileSpreadsheet className="w-5 h-5" />
+            <div className="glass-panel p-7 rounded-3xl border border-slate-800/90 glass-panel-hover flex flex-col justify-between">
+              <div>
+                <div className="p-3.5 rounded-2xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 w-fit mb-4">
+                  <Rocket className="w-7 h-7" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold font-display text-slate-100 mb-2.5">Startups & Digital Enterprises</h3>
+                <p className="text-sm text-slate-300 leading-relaxed font-light">
+                  Scalable full-stack SaaS platforms, automated internal workflows, and AI agent pipelines designed to boost operational efficiency.
+                </p>
               </div>
-              <h3 className="text-base font-bold font-display text-slate-100 mb-1.5">Document-Heavy Operations</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Converting PDF invoices, reports, and legacy files into clean, structured SQL databases and automated decision workflows.
-              </p>
+            </div>
+
+            <div className="glass-panel p-7 rounded-3xl border border-slate-800/90 glass-panel-hover flex flex-col justify-between">
+              <div>
+                <div className="p-3.5 rounded-2xl bg-blue-500/10 text-blue-400 border border-blue-500/20 w-fit mb-4">
+                  <FileSpreadsheet className="w-7 h-7" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold font-display text-slate-100 mb-2.5">Document-Heavy Operations</h3>
+                <p className="text-sm text-slate-300 leading-relaxed font-light">
+                  Converting PDF invoices, reports, and legacy files into clean, structured SQL databases and automated decision workflows.
+                </p>
+              </div>
             </div>
 
           </div>
         </div>
 
       </div>
+
     </section>
   );
 }
+

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Calendar, Sparkles, Bot } from 'lucide-react';
+import { Mail, Phone, MapPin, Calendar, Sparkles } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { sfx } from '../utils/sfx';
 
-export default function Footer({ onOpenCalendly, onOpenAIChat }) {
+export default function Footer({ onOpenCalendly }) {
   const linkedinUrl = import.meta.env.VITE_LINKEDIN_URL || 'https://www.linkedin.com/in/karan-singh04/';
   const githubUrl = import.meta.env.VITE_GITHUB_URL || 'https://github.com/aicodewithkaran';
   const email = import.meta.env.VITE_CONTACT_EMAIL || 'business.aicodewithkaran@gmail.com';
@@ -125,9 +125,6 @@ export default function Footer({ onOpenCalendly, onOpenAIChat }) {
             <button onClick={() => { sfx.playClick(); onOpenCalendly(); }} className="hover:text-cyan-300">
               <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-cyan-400 font-bold">B</kbd> Book Meeting
             </button>
-            <button onClick={() => { sfx.playClick(); onOpenAIChat(); }} className="hover:text-cyan-300">
-              <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-purple-400 font-bold">A</kbd> AI Assistant
-            </button>
           </div>
         </div>
 
@@ -140,3 +137,4 @@ export default function Footer({ onOpenCalendly, onOpenAIChat }) {
     </footer>
   );
 }
+

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Code2, ShieldAlert, FileSearch, Sparkles, ExternalLink, Cpu, Check, ArrowRight, X, Info, ShieldCheck } from 'lucide-react';
+import { Code2, ShieldAlert, FileSearch, Sparkles, ExternalLink, Cpu, Check, ArrowRight, X, Info } from 'lucide-react';
 import { sfx } from '../utils/sfx';
 
-export default function Projects({ onOpenScanShield }) {
+export default function Projects() {
   const [activeModalProject, setActiveModalProject] = useState(null);
 
   const projects = [
@@ -11,21 +11,20 @@ export default function Projects({ onOpenScanShield }) {
       title: "ScanShield AI",
       subtitle: "Enterprise Legal Risk Analyst & Contract Intelligence Platform",
       category: "Document Intelligence",
-      badge: "Production Immersive Architecture",
+      badge: "Production Architecture",
       demoUrl: "https://shieldscan.streamlit.app/",
       icon: ShieldAlert,
       iconBg: "from-indigo-500 to-blue-600",
       description: "A split-screen legal contract auditor with automated clause extraction, plain-English trap explanations, redline counter-language generators, and citation-linked AI chat.",
-      longDescription: "Built as an Awwwards-style enterprise SaaS platform to demonstrate automated legal audit capabilities. Features line-by-line contract parsing, soft risk-tinted card stacks, redline counter-language generators, citation-linked AI chat, dark/light theme options, and custom laser cursor tracking.",
+      longDescription: "Built as an enterprise SaaS platform to demonstrate automated legal audit capabilities. Features line-by-line contract parsing, soft risk-tinted card stacks, redline counter-language generators, citation-linked AI chat, dark/light theme options, and custom precision cursor tracking.",
       keyFeatures: [
-        "Split-Screen Masterwork Dashboard with synchronized document viewer",
+        "Split-Screen Dashboard with synchronized document viewer",
         "Soft Risk-Tinted Card Stack (High, Medium, Low risk classifications)",
         "The Trap (Plain-English danger warnings) & Redline counter-language",
         "Citation-Linked AI Chat Drawer snapping left panel to line numbers",
         "Theme Switcher (Dark/Light Slate) & Laser Precision Cursor toggle"
       ],
-      tags: ["Split-Screen Masterwork", "Multi-Stage LLMs", "Redline Counter-Language", "Citation Chat", "Vite / React 19", "Tailwind v4"],
-      hasAppLauncher: true
+      tags: ["Split-Screen Masterwork", "Multi-Stage LLMs", "Redline Counter-Language", "Citation Chat", "Vite / React 19", "Tailwind v4"]
     },
     {
       id: "candidex",
@@ -45,8 +44,7 @@ export default function Projects({ onOpenScanShield }) {
         "Automated tailored interview question generator per applicant profile",
         "Secure authentication workflows and candidate pipeline state management"
       ],
-      tags: ["ATS Scoring Engine", "LLM Evaluation", "Resume Parsing", "Supabase", "PostgreSQL", "Python Workflows"],
-      hasAppLauncher: false
+      tags: ["ATS Scoring Engine", "LLM Evaluation", "Resume Parsing", "Supabase", "PostgreSQL", "Python Workflows"]
     }
   ];
 
@@ -68,7 +66,7 @@ export default function Projects({ onOpenScanShield }) {
             Featured <span className="text-gradient-cyan">AI Work</span>
           </h2>
           <p className="text-slate-400 text-sm sm:text-base">
-            Detailed breakdown of self-initiated LLM applications with live Streamlit and full-screen interactive web platforms.
+            Detailed breakdown of self-initiated LLM applications with live demos and full system breakdown.
           </p>
         </div>
 
@@ -130,18 +128,8 @@ export default function Projects({ onOpenScanShield }) {
 
                 </div>
 
-                {/* Actions (Launch Interactive Platform + Live Demo + Architecture Modal) */}
-                <div className="space-y-2 pt-2">
-                  {proj.hasAppLauncher && (
-                    <button
-                      onClick={() => { sfx.playClick(); onOpenScanShield(); }}
-                      className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-indigo-500 via-blue-600 to-purple-600 text-white text-xs font-semibold font-display flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-[1.01] transition-all"
-                    >
-                      <ShieldCheck className="w-4 h-4" />
-                      <span>Launch ScanShield AI Platform</span>
-                    </button>
-                  )}
-
+                {/* Actions (Live Demo + Architecture Modal) */}
+                <div className="pt-2">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <a
                       href={proj.demoUrl}
@@ -225,19 +213,6 @@ export default function Projects({ onOpenScanShield }) {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              {activeModalProject.hasAppLauncher && (
-                <button
-                  onClick={() => {
-                    setActiveModalProject(null);
-                    onOpenScanShield();
-                  }}
-                  className="flex-1 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-blue-600 text-white font-display font-semibold text-xs flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
-                >
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>Launch ScanShield AI Platform</span>
-                </button>
-              )}
-
               <a
                 href={activeModalProject.demoUrl}
                 target="_blank"
@@ -263,3 +238,4 @@ export default function Projects({ onOpenScanShield }) {
     </section>
   );
 }
+
