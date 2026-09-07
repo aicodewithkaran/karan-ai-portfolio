@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Code2, ShieldAlert, FileSearch, Sparkles, ExternalLink, Cpu, Check, ArrowRight, X, Info, Building2, Home } from 'lucide-react';
+import { Code2, ShieldAlert, FileSearch, Sparkles, ExternalLink, Cpu, Check, ArrowRight, X, Info, Building2, Home, Play } from 'lucide-react';
 import { sfx } from '../utils/sfx';
 
 export default function Projects() {
@@ -52,7 +52,7 @@ export default function Projects() {
       subtitle: "Luxury Real Estate & Spatial Architectural Showcase",
       category: "UI/UX & Web Development",
       badge: "Interactive Showcase",
-      demoUrl: "https://github.com/aicodewithkaran",
+      demoUrl: "https://www.loom.com/share/05e83bef4f33431abd2bd9e987a2ccbf",
       icon: Home,
       iconBg: "from-amber-500 to-orange-600",
       description: "An immersive dark-mode architectural web application featuring interactive spatial walkthroughs, high-resolution visual galleries, and smooth motion design.",
@@ -71,7 +71,7 @@ export default function Projects() {
       subtitle: "Immersive Architectural Showcase & Interactive Experience",
       category: "UI/UX & Web Development",
       badge: "Web Application",
-      demoUrl: "https://github.com/aicodewithkaran",
+      demoUrl: "https://www.loom.com/share/f1e3d383bc474e75af6380dcf1c75ae7",
       icon: Building2,
       iconBg: "from-emerald-500 to-teal-600",
       description: "A state-of-the-art obsidian dark-mode web application showcasing luxury architectural designs, interactive spatial walkthroughs, and responsive motion FX.",
@@ -112,6 +112,8 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((proj) => {
             const Icon = proj.icon;
+            const isLoomVideo = proj.demoUrl.includes('loom.com');
+
             return (
               <div
                 key={proj.id}
@@ -176,8 +178,8 @@ export default function Projects() {
                       onClick={() => sfx.playClick()}
                       className="py-2.5 px-4 rounded-xl glass-panel border border-slate-700/70 text-slate-300 text-xs font-semibold font-display flex items-center justify-center gap-2 hover:text-white hover:border-cyan-500/50 transition-all"
                     >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>{proj.demoUrl.includes('streamlit') ? 'Streamlit Demo' : 'View Project'}</span>
+                      {isLoomVideo ? <Play className="w-3.5 h-3.5 text-cyan-400 fill-cyan-400/20" /> : <ExternalLink className="w-3.5 h-3.5" />}
+                      <span>{isLoomVideo ? 'Watch Video Demo' : proj.demoUrl.includes('streamlit') ? 'Streamlit Demo' : 'View Project'}</span>
                     </a>
 
                     <button
@@ -257,8 +259,8 @@ export default function Projects() {
                 rel="noreferrer"
                 className="py-3 px-5 rounded-xl glass-panel border border-slate-700 text-slate-200 hover:text-white font-display font-semibold text-xs flex items-center justify-center gap-2 transition-colors"
               >
-                <ExternalLink className="w-4 h-4 text-cyan-400" />
-                <span>{activeModalProject.demoUrl.includes('streamlit') ? 'Streamlit App' : 'View Link'}</span>
+                {activeModalProject.demoUrl.includes('loom.com') ? <Play className="w-4 h-4 text-cyan-400 fill-cyan-400/20" /> : <ExternalLink className="w-4 h-4 text-cyan-400" />}
+                <span>{activeModalProject.demoUrl.includes('loom.com') ? 'Watch Video Demo' : activeModalProject.demoUrl.includes('streamlit') ? 'Streamlit App' : 'View Link'}</span>
               </a>
 
               <button
