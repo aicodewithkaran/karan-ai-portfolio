@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Code2, ShieldAlert, FileSearch, Sparkles, ExternalLink, Cpu, Check, ArrowRight, X, Info } from 'lucide-react';
+import { Code2, ShieldAlert, FileSearch, Sparkles, ExternalLink, Cpu, Check, ArrowRight, X, Info, Building2, Home } from 'lucide-react';
 import { sfx } from '../utils/sfx';
 
 export default function Projects() {
@@ -31,7 +31,7 @@ export default function Projects() {
       title: "Candidex AI",
       subtitle: "AI Resume Screening & Candidate Evaluation Platform",
       category: "Recruitment Automation",
-      badge: "Self-Initiated Proof-of-Concept Platform",
+      badge: "Self-Initiated Platform",
       demoUrl: "https://candidex.streamlit.app/",
       icon: FileSearch,
       iconBg: "from-purple-500 to-pink-600",
@@ -45,6 +45,44 @@ export default function Projects() {
         "Secure authentication workflows and candidate pipeline state management"
       ],
       tags: ["ATS Scoring Engine", "LLM Evaluation", "Resume Parsing", "Supabase", "PostgreSQL", "Python Workflows"]
+    },
+    {
+      id: "infinite-horizon",
+      title: "Infinite Horizon House",
+      subtitle: "Luxury Real Estate & Spatial Architectural Showcase",
+      category: "UI/UX & Web Development",
+      badge: "Interactive Showcase",
+      demoUrl: "https://github.com/aicodewithkaran",
+      icon: Home,
+      iconBg: "from-amber-500 to-orange-600",
+      description: "An immersive dark-mode architectural web application featuring interactive spatial walkthroughs, high-resolution visual galleries, and smooth motion design.",
+      longDescription: "Designed for premium residential architecture. Combines custom typography, glassmorphism card overlays, smooth scroll-triggered animations, and optimized media rendering across desktop and mobile devices.",
+      keyFeatures: [
+        "Obsidian dark mode glassmorphism layout & custom typography",
+        "Interactive room & spatial blueprint inspector gallery",
+        "Fluid motion design & scroll-triggered micro-animations",
+        "Responsive cross-device layout optimized for retina displays"
+      ],
+      tags: ["React 19", "Vite", "Tailwind CSS v4", "Glassmorphism", "Motion FX", "Web Design"]
+    },
+    {
+      id: "iconic-architects",
+      title: "The Iconic Architects",
+      subtitle: "Immersive Architectural Showcase & Interactive Experience",
+      category: "UI/UX & Web Development",
+      badge: "Web Application",
+      demoUrl: "https://github.com/aicodewithkaran",
+      icon: Building2,
+      iconBg: "from-emerald-500 to-teal-600",
+      description: "A state-of-the-art obsidian dark-mode web application showcasing luxury architectural designs, interactive spatial walkthroughs, and responsive motion FX.",
+      longDescription: "Crafted to deliver a high-end visual experience for architectural projects. Implements smooth scroll reveals, glassmorphism panel overlays, interactive project filters, and high-performance image loading optimization.",
+      keyFeatures: [
+        "Obsidian dark mode glassmorphism layout & custom typography",
+        "Interactive 3D spatial project gallery & blueprint modal inspector",
+        "Fluid motion design & scroll-triggered micro-animations",
+        "Responsive cross-device layout optimized for retina displays"
+      ],
+      tags: ["React 19", "Vite", "Tailwind CSS v4", "Glassmorphism", "Motion FX", "Web UX"]
     }
   ];
 
@@ -63,10 +101,10 @@ export default function Projects() {
             <span className="text-xs font-mono text-cyan-300">SYSTEM ARCHITECTURES & PROOFS-OF-CONCEPT</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold font-display text-slate-100 mb-4">
-            Featured <span className="text-gradient-cyan">AI Work</span>
+            Featured <span className="text-gradient-cyan">AI & Web Work</span>
           </h2>
           <p className="text-slate-400 text-sm sm:text-base">
-            Detailed breakdown of self-initiated LLM applications with live demos and full system breakdown.
+            Detailed breakdown of production LLM pipelines, automated document tools, and high-performance web applications.
           </p>
         </div>
 
@@ -139,7 +177,7 @@ export default function Projects() {
                       className="py-2.5 px-4 rounded-xl glass-panel border border-slate-700/70 text-slate-300 text-xs font-semibold font-display flex items-center justify-center gap-2 hover:text-white hover:border-cyan-500/50 transition-all"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Streamlit Demo</span>
+                      <span>{proj.demoUrl.includes('streamlit') ? 'Streamlit Demo' : 'View Project'}</span>
                     </a>
 
                     <button
@@ -220,7 +258,7 @@ export default function Projects() {
                 className="py-3 px-5 rounded-xl glass-panel border border-slate-700 text-slate-200 hover:text-white font-display font-semibold text-xs flex items-center justify-center gap-2 transition-colors"
               >
                 <ExternalLink className="w-4 h-4 text-cyan-400" />
-                <span>Streamlit App</span>
+                <span>{activeModalProject.demoUrl.includes('streamlit') ? 'Streamlit App' : 'View Link'}</span>
               </a>
 
               <button
@@ -238,4 +276,3 @@ export default function Projects() {
     </section>
   );
 }
-
