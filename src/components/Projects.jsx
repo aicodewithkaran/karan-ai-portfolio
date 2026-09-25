@@ -136,7 +136,7 @@ export default function Projects() {
       subtitle: "High-Conversion Enterprise Services Redesign & Dispatcher",
       category: "commercial",
       badge: "Commercial Web App",
-      demoUrl: "https://github.com/aicodewithkaran",
+      demoUrl: "https://github.com/aicodewithkaran/catania-sons-plumbing",
       icon: Wrench,
       iconBg: "from-red-500 to-rose-600",
       description: "A complete digital transformation featuring dynamic multi-city service area selectors, interactive instant quote calculators, emergency dispatchers, and mobile call bars.",
