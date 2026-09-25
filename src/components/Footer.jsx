@@ -105,11 +105,11 @@ export default function Footer({ onOpenCalendly }) {
           <div>
             <h3 className="font-mono text-xs text-slate-300 tracking-wider mb-4 font-semibold">NAVIGATION</h3>
             <ul className="space-y-2 text-xs">
-              <li><a href="#hero" className="hover:text-cyan-400 transition-colors">Target Solutions</a></li>
-              <li><a href="#experience" className="hover:text-cyan-400 transition-colors">Career Timeline</a></li>
-              <li><a href="#projects" className="hover:text-cyan-400 transition-colors">Featured AI Work</a></li>
+              <li><a href="#hero" className="hover:text-cyan-400 transition-colors">About & Solutions</a></li>
+              <li><a href="#projects" className="hover:text-cyan-400 transition-colors">Featured Projects</a></li>
               <li><a href="#testimonials" className="hover:text-cyan-400 transition-colors">Testimonials</a></li>
-              <li><a href="#skills" className="hover:text-cyan-400 transition-colors">Stack & Certifications</a></li>
+              <li><a href="#skills" className="hover:text-cyan-400 transition-colors">Stack & Skills</a></li>
+              <li><a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a></li>
             </ul>
           </div>
 

@@ -7,7 +7,6 @@ export default function Navbar({ onOpenCalendly }) {
 
   const navLinks = [
     { name: 'About', href: '#hero', icon: Sparkles },
-    { name: 'Experience', href: '#experience', icon: Briefcase },
     { name: 'Projects', href: '#projects', icon: Code2 },
     { name: 'Testimonials', href: '#testimonials', icon: MessageSquare },
     { name: 'Stack', href: '#skills', icon: FileText },
@@ -20,17 +19,24 @@ export default function Navbar({ onOpenCalendly }) {
         
         {/* Brand Logo */}
         <a href="#hero" className="flex items-center gap-3 group" onClick={() => sfx.playClick()}>
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 p-[1px]">
-            <div className="w-full h-full bg-[#0b0f17] rounded-[11px] flex items-center justify-center font-bold text-cyan-400 font-display text-lg group-hover:bg-transparent group-hover:text-white transition-all duration-300">
-              KS
-            </div>
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 p-[1.5px] overflow-hidden">
+            <img 
+              src="/avatar.png" 
+              alt="Karan Singh" 
+              className="w-full h-full object-cover rounded-[10px] group-hover:scale-110 transition-transform duration-300"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.style.display = 'none';
+                e.target.parentNode.innerHTML = '<div class="w-full h-full bg-[#0b0f17] rounded-[10px] flex items-center justify-center font-bold text-cyan-400 font-display text-sm">KS</div>';
+              }}
+            />
           </div>
           <div>
             <div className="font-bold text-slate-100 tracking-wide flex items-center gap-1.5 font-display text-base sm:text-lg">
               Karan Singh
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
             </div>
-            <div className="text-[11px] text-cyan-400 font-mono tracking-tight font-medium">AI/ML Engineer</div>
+            <div className="text-[11px] text-cyan-400 font-mono tracking-tight font-medium">AI & Full-Stack Engineer</div>
           </div>
         </a>
 

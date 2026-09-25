@@ -1,16 +1,42 @@
 import React, { useState } from 'react';
-import { Code2, ShieldAlert, FileSearch, Sparkles, ExternalLink, Cpu, Check, ArrowRight, X, Info, Building2, Home, Play } from 'lucide-react';
+import { 
+  Code2, 
+  ShieldAlert, 
+  FileSearch, 
+  Sparkles, 
+  ExternalLink, 
+  Cpu, 
+  Check, 
+  ArrowRight, 
+  X, 
+  Building2, 
+  Home, 
+  Play, 
+  Headphones, 
+  Wrench, 
+  HeartHandshake, 
+  Layers, 
+  Filter
+} from 'lucide-react';
 import { sfx } from '../utils/sfx';
 
 export default function Projects() {
+  const [activeTab, setActiveTab] = useState('all');
   const [activeModalProject, setActiveModalProject] = useState(null);
+
+  const categories = [
+    { id: 'all', label: 'All Projects' },
+    { id: 'ai', label: 'AI & Document Intelligence', icon: Cpu },
+    { id: 'interactive', label: 'Interactive & 3D Web', icon: Sparkles },
+    { id: 'commercial', label: 'Commercial & SaaS', icon: Layers }
+  ];
 
   const projects = [
     {
       id: "shieldscan",
       title: "ScanShield AI",
       subtitle: "Enterprise Legal Risk Analyst & Contract Intelligence Platform",
-      category: "Document Intelligence",
+      category: "ai",
       badge: "Production Architecture",
       demoUrl: "https://shieldscan.streamlit.app/",
       icon: ShieldAlert,
@@ -24,18 +50,18 @@ export default function Projects() {
         "Citation-Linked AI Chat Drawer snapping left panel to line numbers",
         "Theme Switcher (Dark/Light Slate) & Laser Precision Cursor toggle"
       ],
-      tags: ["Split-Screen Masterwork", "Multi-Stage LLMs", "Redline Counter-Language", "Citation Chat", "Vite / React 19", "Tailwind v4"]
+      tags: ["Split-Screen Masterwork", "Multi-Stage LLMs", "Redline Counter-Language", "Citation Chat", "Vite / React 19", "Python Backend"]
     },
     {
       id: "candidex",
       title: "Candidex AI",
       subtitle: "AI Resume Screening & Candidate Evaluation Platform",
-      category: "Recruitment Automation",
-      badge: "Self-Initiated Platform",
+      category: "ai",
+      badge: "Recruitment Automation",
       demoUrl: "https://candidex.streamlit.app/",
       icon: FileSearch,
       iconBg: "from-purple-500 to-pink-600",
-      description: "An AI-powered resume evaluation system combining ATS scoring with LLM-based candidate assessment and interview recommendations.",
+      description: "An AI-powered resume evaluation system combining ATS scoring with LLM-based candidate assessment and tailored interview recommendations.",
       longDescription: "Engineered as an end-to-end recruitment platform proof-of-concept. Ingests candidate resumes, parses technical skills beyond keyword matching, and synthesizes tailored interview questions and scoring matrices.",
       keyFeatures: [
         "Hybrid ATS scoring + LLM deep semantic candidate evaluation",
@@ -47,11 +73,50 @@ export default function Projects() {
       tags: ["ATS Scoring Engine", "LLM Evaluation", "Resume Parsing", "Supabase", "PostgreSQL", "Python Workflows"]
     },
     {
+      id: "sony-wh1000xm6",
+      title: "Sony WH-1000XM6 Showcase",
+      subtitle: "Next-Gen Scrollytelling Experience & Interactive Audio Lab",
+      category: "interactive",
+      badge: "Interactive 3D Experience",
+      demoUrl: "https://github.com/aicodewithkaran",
+      icon: Headphones,
+      iconBg: "from-cyan-500 to-blue-600",
+      description: "An Apple-style interactive product showcase powered by a 240-frame preloaded canvas scrub animation, 3D engineering breakdown, and real-time audio spectrum lab.",
+      longDescription: "Built using React 19, TypeScript, and high-performance HTML5 Canvas rendering. Features zero-lag scrollytelling across a 450vh narrative timeline, interactive active noise cancellation (ANC) audio spectrum visualizer, 3D component explosion inspection, and dynamic pre-order flow.",
+      keyFeatures: [
+        "240-Frame HTML5 Canvas sequence scrub with memory preloader",
+        "Interactive Audio Lab simulating ANC frequency spectrums",
+        "3D Hardware Engineering exploded component inspection",
+        "Benchmark matrix comparison against flagship competition",
+        "Translucent glassmorphism Apple-inspired design system"
+      ],
+      tags: ["Canvas Scrollytelling", "React 19 / TS", "Audio Visualizer", "Motion Design", "High-FPS Canvas", "Tailwind CSS"]
+    },
+    {
+      id: "iconic-architects",
+      title: "The Iconic Architects",
+      subtitle: "Immersive Architectural Showcase & Interactive Experience",
+      category: "interactive",
+      badge: "Web Application",
+      demoUrl: "https://www.loom.com/share/f1e3d383bc474e75af6380dcf1c75ae7",
+      icon: Building2,
+      iconBg: "from-emerald-500 to-teal-600",
+      description: "A state-of-the-art obsidian dark-mode web application showcasing luxury architectural designs, interactive spatial walkthroughs, and responsive motion FX.",
+      longDescription: "Crafted to deliver a high-end visual experience for architectural projects. Implements smooth scroll reveals, glassmorphism panel overlays, interactive project filters, and high-performance image loading optimization.",
+      keyFeatures: [
+        "Obsidian dark mode glassmorphism layout & custom typography",
+        "Interactive 3D spatial project gallery & blueprint modal inspector",
+        "Fluid motion design & scroll-triggered micro-animations",
+        "Responsive cross-device layout optimized for retina displays"
+      ],
+      tags: ["React 19", "Vite", "Tailwind CSS v4", "Glassmorphism", "Motion FX", "Web UX"]
+    },
+    {
       id: "infinite-horizon",
       title: "Infinite Horizon House",
       subtitle: "Luxury Real Estate & Spatial Architectural Showcase",
-      category: "UI/UX & Web Development",
-      badge: "Interactive Showcase",
+      category: "interactive",
+      badge: "Spatial Showcase",
       demoUrl: "https://www.loom.com/share/05e83bef4f33431abd2bd9e987a2ccbf",
       icon: Home,
       iconBg: "from-amber-500 to-orange-600",
@@ -66,58 +131,131 @@ export default function Projects() {
       tags: ["React 19", "Vite", "Tailwind CSS v4", "Glassmorphism", "Motion FX", "Web Design"]
     },
     {
-      id: "iconic-architects",
-      title: "The Iconic Architects",
-      subtitle: "Immersive Architectural Showcase & Interactive Experience",
-      category: "UI/UX & Web Development",
-      badge: "Web Application",
-      demoUrl: "https://www.loom.com/share/f1e3d383bc474e75af6380dcf1c75ae7",
-      icon: Building2,
-      iconBg: "from-emerald-500 to-teal-600",
-      description: "A state-of-the-art obsidian dark-mode web application showcasing luxury architectural designs, interactive spatial walkthroughs, and responsive motion FX.",
-      longDescription: "Crafted to deliver a high-end visual experience for architectural projects. Implements smooth scroll reveals, glassmorphism panel overlays, interactive project filters, and high-performance image loading optimization.",
+      id: "catania-plumbing",
+      title: "Catania & Son Plumbing",
+      subtitle: "High-Conversion Enterprise Services Redesign & Dispatcher",
+      category: "commercial",
+      badge: "Commercial Web App",
+      demoUrl: "https://github.com/aicodewithkaran",
+      icon: Wrench,
+      iconBg: "from-red-500 to-rose-600",
+      description: "A complete digital transformation featuring dynamic multi-city service area selectors, interactive instant quote calculators, emergency dispatchers, and mobile call bars.",
+      longDescription: "Engineered to maximize local service business conversion rates. Features automated territory switching (Las Vegas vs Henderson), dynamic multi-step quote modals, 24/7 emergency dispatch banners, customer review sliders, and verified work galleries.",
       keyFeatures: [
-        "Obsidian dark mode glassmorphism layout & custom typography",
-        "Interactive 3D spatial project gallery & blueprint modal inspector",
-        "Fluid motion design & scroll-triggered micro-animations",
-        "Responsive cross-device layout optimized for retina displays"
+        "Interactive Service Area Selector with dynamic territory routing",
+        "Dynamic multi-step Instant Quote & Service Request generator",
+        "24/7 Emergency Dispatch Banner with one-tap instant calling",
+        "Thumb-friendly fixed mobile call bar for high conversion",
+        "Customer reviews carousel & verified past project showcase"
       ],
-      tags: ["React 19", "Vite", "Tailwind CSS v4", "Glassmorphism", "Motion FX", "Web UX"]
+      tags: ["React", "Vite", "Tailwind CSS", "Dynamic Forms", "Local SEO", "High-Conversion UI"]
+    },
+    {
+      id: "paws-and-co",
+      title: "Paws & Co Animal Hospital",
+      subtitle: "Modern Veterinary Care & Client Management Portal",
+      category: "commercial",
+      badge: "Full-Stack Portal",
+      demoUrl: "https://github.com/aicodewithkaran",
+      icon: HeartHandshake,
+      iconBg: "from-teal-500 to-cyan-600",
+      description: "An end-to-end veterinary healthcare portal featuring seamless pet owner accounts, online booking workflows, health record tracking, and real-time alerts.",
+      longDescription: "Built for modern pet clinics and pet owners. Features interactive service booking, pet health history timeline, owner portal dashboard, real-time alert notifications (Toaster), and role-based access flows.",
+      keyFeatures: [
+        "Online appointment scheduling with service customization",
+        "Pet Owner Portal with medical history & vaccination records",
+        "Real-time toast notifications and interactive form validation",
+        "Mobile-first responsive interface with clean clinical aesthetic"
+      ],
+      tags: ["React Router", "TypeScript", "Vite", "Tailwind CSS", "Client Portal", "Sonner Alerts"]
+    },
+    {
+      id: "us-roofing",
+      title: "US Roofing Co",
+      subtitle: "Enterprise Roofing & Solar Digital Transformation",
+      category: "commercial",
+      badge: "Commercial Redesign",
+      demoUrl: "https://github.com/aicodewithkaran",
+      icon: Layers,
+      iconBg: "from-blue-500 to-indigo-600",
+      description: "A high-impact digital redesign for an enterprise roofing contractor featuring instant roof estimation tools, storm damage emergency responder, and warranty visualizers.",
+      longDescription: "Redesigned to transform lead generation for residential and commercial roofing. Features high-trust visual proof sections, dynamic roof material comparison sliders, instant quote generation, and streamlined inspection scheduling.",
+      keyFeatures: [
+        "Instant interactive roof inspection and quote estimator",
+        "Storm damage emergency response dispatch modal",
+        "Material durability & architectural comparison showcase",
+        "SEO-optimized local conversion funnel"
+      ],
+      tags: ["React", "Vite", "Tailwind CSS", "Lead Generation", "Interactive Estimator", "Modern UI"]
     }
   ];
+
+  const filteredProjects = activeTab === 'all' 
+    ? projects 
+    : projects.filter(p => p.category === activeTab);
 
   return (
     <section id="projects" className="py-24 relative overflow-hidden bg-slate-950/40">
       
       {/* Background glow */}
       <div className="glow-orb-purple top-1/2 -left-60"></div>
+      <div className="glow-orb-cyan bottom-10 -right-60 opacity-30"></div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border border-cyan-500/30 mb-4">
             <Code2 className="w-3.5 h-3.5 text-cyan-400" />
-            <span className="text-xs font-mono text-cyan-300">SYSTEM ARCHITECTURES & PROOFS-OF-CONCEPT</span>
+            <span className="text-xs font-mono text-cyan-300">PORTFOLIO & SYSTEM ARCHITECTURES</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold font-display text-slate-100 mb-4">
-            Featured <span className="text-gradient-cyan">AI & Web Work</span>
+            Featured <span className="text-gradient-cyan">Projects & Work</span>
           </h2>
           <p className="text-slate-400 text-sm sm:text-base">
-            Detailed breakdown of production LLM pipelines, automated document tools, and high-performance web applications.
+            Explore production AI pipelines, interactive 3D web applications, document intelligence engines, and high-conversion commercial platforms.
           </p>
+        </div>
+
+        {/* Category Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-14">
+          {categories.map((cat) => {
+            const Icon = cat.icon;
+            const count = cat.id === 'all' 
+              ? projects.length 
+              : projects.filter(p => p.category === cat.id).length;
+
+            return (
+              <button
+                key={cat.id}
+                onClick={() => { sfx.playClick(); setActiveTab(cat.id); }}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono transition-all duration-300 ${
+                  activeTab === cat.id
+                    ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.25)] font-semibold'
+                    : 'glass-panel text-slate-400 border-slate-800 hover:text-slate-200 hover:border-slate-700'
+                }`}
+              >
+                {Icon && <Icon className="w-3.5 h-3.5 text-cyan-400" />}
+                <span>{cat.label}</span>
+                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-800/80 text-slate-400 border border-slate-700">
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Project Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((proj) => {
+          {filteredProjects.map((proj) => {
             const Icon = proj.icon;
             const isLoomVideo = proj.demoUrl.includes('loom.com');
+            const isGithub = proj.demoUrl.includes('github.com');
 
             return (
               <div
                 key={proj.id}
-                className="glass-panel rounded-3xl p-7 sm:p-8 border border-slate-800/90 glass-panel-hover flex flex-col justify-between group"
+                className="glass-panel rounded-3xl p-7 sm:p-8 border border-slate-800/90 glass-panel-hover flex flex-col justify-between group relative overflow-hidden"
               >
                 <div>
                   
@@ -173,13 +311,25 @@ export default function Projects() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <a
                       href={proj.demoUrl}
-                      target="_blank"
+                      target={proj.demoUrl.startsWith('#') ? '_self' : '_blank'}
                       rel="noreferrer"
                       onClick={() => sfx.playClick()}
                       className="py-2.5 px-4 rounded-xl glass-panel border border-slate-700/70 text-slate-300 text-xs font-semibold font-display flex items-center justify-center gap-2 hover:text-white hover:border-cyan-500/50 transition-all"
                     >
-                      {isLoomVideo ? <Play className="w-3.5 h-3.5 text-cyan-400 fill-cyan-400/20" /> : <ExternalLink className="w-3.5 h-3.5" />}
-                      <span>{isLoomVideo ? 'Watch Video Demo' : proj.demoUrl.includes('streamlit') ? 'Streamlit Demo' : 'View Project'}</span>
+                      {isLoomVideo ? (
+                        <Play className="w-3.5 h-3.5 text-cyan-400 fill-cyan-400/20" />
+                      ) : (
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      )}
+                      <span>
+                        {isLoomVideo 
+                          ? 'Watch Video Demo' 
+                          : proj.demoUrl.includes('streamlit') 
+                            ? 'Streamlit Demo' 
+                            : isGithub 
+                              ? 'View Project' 
+                              : 'Explore Project'}
+                      </span>
                     </a>
 
                     <button
@@ -201,7 +351,7 @@ export default function Projects() {
 
       {/* Project Deep Dive Modal */}
       {activeModalProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn">
           <div className="glass-panel w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 sm:p-8 border border-cyan-500/30 shadow-2xl relative">
             
             {/* Close Button */}
@@ -229,7 +379,7 @@ export default function Projects() {
 
             {/* Key Features List */}
             <div className="mb-6">
-              <h4 className="text-xs font-mono text-slate-400 tracking-wider mb-3">CORE SYSTEM CAPABILITIES</h4>
+              <h4 className="text-xs font-mono text-slate-400 tracking-wider mb-3 uppercase">CORE SYSTEM CAPABILITIES</h4>
               <div className="space-y-2.5">
                 {activeModalProject.keyFeatures.map((feat, fIdx) => (
                   <div key={fIdx} className="flex items-start gap-2.5 text-xs text-slate-200">
@@ -242,7 +392,7 @@ export default function Projects() {
 
             {/* Tech Stack */}
             <div className="mb-8">
-              <h4 className="text-xs font-mono text-slate-400 tracking-wider mb-3">TECHNOLOGY STACK</h4>
+              <h4 className="text-xs font-mono text-slate-400 tracking-wider mb-3 uppercase">TECHNOLOGY STACK</h4>
               <div className="flex flex-wrap gap-2">
                 {activeModalProject.tags.map((tag, tIdx) => (
                   <span key={tIdx} className="px-3 py-1 rounded-lg text-xs font-mono bg-cyan-950/60 text-cyan-300 border border-cyan-500/30">
@@ -255,12 +405,22 @@ export default function Projects() {
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href={activeModalProject.demoUrl}
-                target="_blank"
+                target={activeModalProject.demoUrl.startsWith('#') ? '_self' : '_blank'}
                 rel="noreferrer"
                 className="py-3 px-5 rounded-xl glass-panel border border-slate-700 text-slate-200 hover:text-white font-display font-semibold text-xs flex items-center justify-center gap-2 transition-colors"
               >
-                {activeModalProject.demoUrl.includes('loom.com') ? <Play className="w-4 h-4 text-cyan-400 fill-cyan-400/20" /> : <ExternalLink className="w-4 h-4 text-cyan-400" />}
-                <span>{activeModalProject.demoUrl.includes('loom.com') ? 'Watch Video Demo' : activeModalProject.demoUrl.includes('streamlit') ? 'Streamlit App' : 'View Link'}</span>
+                {activeModalProject.demoUrl.includes('loom.com') ? (
+                  <Play className="w-4 h-4 text-cyan-400 fill-cyan-400/20" />
+                ) : (
+                  <ExternalLink className="w-4 h-4 text-cyan-400" />
+                )}
+                <span>
+                  {activeModalProject.demoUrl.includes('loom.com') 
+                    ? 'Watch Video Demo' 
+                    : activeModalProject.demoUrl.includes('streamlit') 
+                      ? 'Streamlit App' 
+                      : 'View Link'}
+                </span>
               </a>
 
               <button

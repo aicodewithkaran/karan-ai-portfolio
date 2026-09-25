@@ -128,20 +128,44 @@ export default function Hero({ onOpenCalendly }) {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center">
         
-        {/* Status Tag */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-panel border border-cyan-500/30 mb-6">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-          </span>
-          <span className="text-[11px] font-mono text-cyan-300 tracking-wide">
-            AI/ML ENGINEER & AUTOMATION SPECIALIST
-          </span>
+        {/* Profile Avatar + Status Tag */}
+        <div className="flex flex-col items-center justify-center mb-6">
+          <div className="relative mb-4 group">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-gradient-to-tr from-cyan-500 via-blue-500 to-purple-600 p-[2px] shadow-2xl shadow-cyan-500/20">
+              <div className="w-full h-full rounded-[22px] overflow-hidden bg-[#0b0f17]">
+                <img 
+                  src="/avatar.png" 
+                  alt="Karan Singh" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.style.display = 'none';
+                    e.target.parentNode.innerHTML = '<div class="w-full h-full flex items-center justify-center text-cyan-400 font-bold text-3xl font-display">KS</div>';
+                  }}
+                />
+              </div>
+            </div>
+            {/* Online Indicator Badge */}
+            <div className="absolute -bottom-1 -right-1 px-2.5 py-0.5 rounded-full bg-slate-900 border border-emerald-500/50 flex items-center gap-1.5 shadow-lg">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="text-[10px] font-mono text-emerald-300 font-medium">Available</span>
+            </div>
+          </div>
+
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-panel border border-cyan-500/30">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+            </span>
+            <span className="text-[11px] font-mono text-cyan-300 tracking-wide">
+              AI / FULL-STACK ENGINEER & AUTOMATION SPECIALIST
+            </span>
+          </div>
         </div>
 
         {/* Main Headline */}
         <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold font-display tracking-tight text-slate-100 leading-tight mb-4 max-w-4xl mx-auto">
-          I build custom AI tools that read your documents & automate manual work
+          I build custom AI tools, high-performance web applications & automated workflows
         </h1>
 
         {/* Dynamic Sub-headline */}
@@ -154,7 +178,7 @@ export default function Hero({ onOpenCalendly }) {
 
         {/* Subtitle */}
         <p className="max-w-2xl mx-auto text-xs sm:text-sm text-slate-300 font-light leading-relaxed mb-8">
-          Transforming complex business needs into clean full-stack web applications, AI integrations, and automated data pipelines.
+          Transforming complex business needs into clean full-stack web applications, custom LLM integrations, document intelligence engines, and automated data pipelines.
         </p>
 
         {/* CTAs */}
@@ -168,6 +192,16 @@ export default function Hero({ onOpenCalendly }) {
             <span>Book a 1-on-1 Strategy Call</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
+
+          <a
+            href="#projects"
+            onClick={() => sfx.playClick()}
+            onMouseEnter={() => sfx.playHover()}
+            className="flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold font-display glass-panel border border-slate-700 text-slate-200 hover:text-white hover:border-cyan-400/60 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+          >
+            <span>Explore Projects</span>
+            <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
+          </a>
         </div>
 
 
