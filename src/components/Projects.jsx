@@ -156,7 +156,7 @@ export default function Projects() {
       subtitle: "Modern Veterinary Care & Client Management Portal",
       category: "commercial",
       badge: "Full-Stack Portal",
-      demoUrl: "https://github.com/aicodewithkaran",
+      demoUrl: "https://github.com/aicodewithkaran/paws-and-co",
       icon: HeartHandshake,
       iconBg: "from-teal-500 to-cyan-600",
       description: "An end-to-end veterinary healthcare portal featuring seamless pet owner accounts, online booking workflows, health record tracking, and real-time alerts.",
