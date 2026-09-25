@@ -78,7 +78,7 @@ export default function Projects() {
       subtitle: "Next-Gen Scrollytelling Experience & Interactive Audio Lab",
       category: "interactive",
       badge: "Interactive 3D Experience",
-      demoUrl: "https://github.com/aicodewithkaran",
+      demoUrl: "https://github.com/aicodewithkaran/3d-landing-page",
       icon: Headphones,
       iconBg: "from-cyan-500 to-blue-600",
       description: "An Apple-style interactive product showcase powered by a 240-frame preloaded canvas scrub animation, 3D engineering breakdown, and real-time audio spectrum lab.",
