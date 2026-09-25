@@ -233,8 +233,8 @@ export default function Projects() {
       tags: ["React", "Vite", "Tailwind CSS", "Local SEO", "High Conversion", "Emergency Dispatch"]
     },
     {
-      id: "sony-wh1000xm6",
-      title: "Sony WH-1000XM6 Showcase",
+      id: "3d-website",
+      title: "3D Website",
       subtitle: "Next-Gen Scrollytelling Experience & Interactive Audio Lab",
       category: "web",
       badge: "Interactive 3D Experience",
