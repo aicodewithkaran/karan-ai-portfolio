@@ -206,7 +206,7 @@ export default function Projects() {
       subtitle: "24/7 Emergency Plumbing & Commercial Services Redesign",
       category: "web",
       badge: "Commercial Web App",
-      demoUrl: "https://github.com/aicodewithkaran",
+      demoUrl: "https://github.com/aicodewithkaran/american-plumbing-webiste",
       demoType: "github",
       images: [
         {
